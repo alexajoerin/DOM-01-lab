@@ -29,11 +29,15 @@
   background-color: silver;
 }
 
-#challenge3 p {
+#bulb {
   background-color: dimgray;
   color: white;
   border: 1px solid dimgray;
   border-radius: 10px;
   padding: 10px 20px 10px 8px;
   width: 125px;
+}
+
+#bulb.on {
+  background-color: yellow;
 }

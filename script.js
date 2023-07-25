@@ -2,7 +2,7 @@
 
 // #1
 let total = 0;
-const totalParagraph = document.querySelector("#challenge1 p");
+const totalParagraph = document.querySelector("#total");
 const cola = document.querySelector("#cola");
 const peanuts = document.querySelector("#peanuts");
 const chocolate = document.querySelector("#chocolate");
@@ -32,7 +32,21 @@ fruit.addEventListener("click", () => {
 
 const form = document.querySelector("form");
 const coinContainer = document.querySelector("#coin-container");
-const removeCoin = document.querySelector("#coin-container li");
+
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   const howMany = document.querySelector("#howMany");
+//   const whichCoin = document.querySelector("#whichCoin");
+//   for (let i = 0; i < parseInt(howMany.value); i++) {
+//     const coin = document.createElement("li");
+//     // this line allows the id to be targeted in CSS
+//     coin.classList.add("coin", whichCoin.value);
+//     coin.textContent = whichCoin.value;
+//     coinContainer.append(coin);
+//   }
+//   howMany.value = "";
+//   whichCoin.value = "";
+// });
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -42,7 +56,11 @@ form.addEventListener("submit", (event) => {
     const coin = document.createElement("li");
     coin.classList.add("coin", whichCoin.value);
     coin.textContent = whichCoin.value;
+    // newCoin.setAttribute("data-index", i);
     coinContainer.append(coin);
+    coin.addEventListener("click", () => {
+      coin.remove();
+    });
   }
   howMany.value = "";
   whichCoin.value = "";
@@ -53,28 +71,32 @@ form.addEventListener("submit", (event) => {
 // });
 
 // #3
-const lightBulb = document.querySelector("#challenge3 p");
+const lightBulb = document.querySelector("#bulb");
 const onButton = document.querySelector("#on-button");
 const offButton = document.querySelector("#off-button");
 const toggleButton = document.querySelector("#toggle-button");
 const endButton = document.querySelector("#end-button");
+const lightButtons = document.querySelectorAll("#challenge3 button");
 
 onButton.addEventListener("click", () => {
-  lightBulb.style.backgroundColor = "yellow";
+  lightBulb.classList.add("on");
 });
 
 offButton.addEventListener("click", () => {
-  lightBulb.style.backgroundColor = "dimgray";
+  lightBulb.classList.remove("on");
 });
 
 toggleButton.addEventListener("click", () => {
-  if (lightBulb.style.backgroundColor === "yellow") {
-    lightBulb.style.backgroundColor = "dimgray";
-  } else {
-    lightBulb.style.backgroundColor = "yellow";
-  }
+  lightBulb.classList.toggle("on");
 });
 
 endButton.addEventListener("click", () => {
-  lightBulb.div.removeChild(p);
+  lightBulb.remove();
+  //   lightButtons.forEach((item) => {
+  //     item.disabled = true;
+  //   });
+  onButton.disabled = true;
+  offButton.disabled = true;
+  toggleButton.disabled = true;
+  endButton.disabled = true;
 });
